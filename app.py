@@ -12,16 +12,10 @@ def about():
     # Показываем шаблон about.html
     return render_template('about.html')
 
-@app.route('/contacts', methods=['GET', 'POST'])
-def contacts():
-    if request.method == 'POST':
-        # Обработка POST-запроса (например, формы обратной связи)
-        user_name = request.form.get('name')
-        user_message = request.form.get('message')
-        return f"Приняли сообщение от {user_name}: {user_message}"
-    else:
-        # При GET-запросе — показываем форму contacts.html
-        return render_template('contacts.html')
+@app.route('/audit')
+def audit():
+    # Показываем шаблон about.html
+    return render_template('audit.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,22 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
+  <meta charset="UTF-8" />
+  <title>audIT</title>
+  <style>
+    /* Стили для всей страницы */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #424242; /* Тёмно-серый фон */
+      font-family: Arial, sans-serif;
+      text-align: center; /* Центровка содержимого */
+      color: #ffffff;     /* Текст по умолчанию — белый */
+    }
+
+    /* Заголовок (логотип) */
+    h1 {
+      margin-top: 100px;
+      font-size: 72px;    /* Размер шрифта */
+      color: #00BCD4;     /* Бирюзовый цвет */
+      margin-bottom: 60px;
+    }
+
+    /* Общий стиль для больших фиолетовых кнопок */
+    .main-button {
+      background-color: #9C27B0; /* Фиолетовый цвет */
+      color: #ffffff;
+      font-size: 24px;
+      padding: 20px 60px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+      margin: 10px; /* Небольшой отступ между кнопками */
+    }
+
+    /* Плавающая кнопка со стрелкой (в нижнем правом углу) */
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #00BCD4; /* Бирюзовый цвет */
+      color: #ffffff;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Футер в виде фиолетового «пузырька» внизу (по центру) */
+    .footer-bubble {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #9C27B0; /* Фиолетовый цвет */
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 14px;
+      /* Немного поднимаем, чтобы не наезжать на плавающую кнопку */
+      margin-bottom: 60px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Главная страница</h1>
-    <p>Добро пожаловать!</p>
+  <h1>audIT</h1>
 
-    <!-- Кнопка для перехода на страницу "О нас" -->
-    <form action="/about" method="GET">
-        <button type="submit">О нас</button>
-    </form>
+  <!-- Большая кнопка "Начать аудит" -->
+  <button class="main-button">
+    Начать аудит
+  </button>
 
-    <!-- Кнопка для перехода на страницу "Контакты" -->
-    <form action="/contacts" method="GET">
-        <button type="submit">Контакты</button>
-    </form>
+  <!-- Кнопка "О НАС", ведущая на маршрут /about -->
+  <!-- Вариант 1: через форму -->
+  <!--
+  <form action="/about" method="get">
+      <button class="main-button" type="submit">О НАС</button>
+  </form>
+  -->
 
+  <!-- Вариант 2: через url_for (рекомендуется в Flask) -->
+  <form action="{{ url_for('about') }}" method="get">
+      <button class="main-button" type="submit">О НАС</button>
+  </form>
+
+  <!-- Плавающая кнопка со стрелкой -->
+  <button class="floating-button">
+    ➜
+  </button>
+
+  <!-- Фиолетовый «пузырёк» внизу экрана -->
+  <footer class="footer-bubble">
+    САЙТ ДЛЯ АУДИТОВ ИИ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
+  </footer>
 </body>
 </html>
