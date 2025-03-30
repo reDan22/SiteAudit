@@ -2,101 +2,104 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>audIT</title>
+  <title>AudIT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     /* Стили для всей страницы */
     body {
       margin: 0;
       padding: 0;
-      background-color: #424242; /* Тёмно-серый фон */
-      font-family: Arial, sans-serif;
-      text-align: center; /* Центровка содержимого */
-      color: #ffffff;     /* Текст по умолчанию — белый */
+      font-family: 'Roboto', Arial, sans-serif;
+      text-align: center;
+      color: #ffffff;
+      background:
+        url("{{ url_for('static', filename='images/Background2.png') }}")
+        center/cover
+        no-repeat
+        fixed;
+      min-height: 100vh;
     }
 
     /* Заголовок (логотип) */
     h1 {
       margin-top: 100px;
-      font-size: 72px;    /* Размер шрифта */
-      color: #00BCD4;     /* Бирюзовый цвет */
+      font-size: 72px;
+      color: #00BCD4;
       margin-bottom: 60px;
+      transition: text-shadow 0.3s ease;
+      font-family: 'Roboto', sans-serif; /* Добавлено для заголовка */
+      font-weight: 700;
+
     }
 
-    /* Общий стиль для больших фиолетовых кнопок */
+    h1:hover {
+      text-shadow: 0 0 15px #00BCD4;
+    }
+
+    /* Стиль для кнопок */
     .main-button {
-      background-color: #9C27B0; /* Фиолетовый цвет */
+      background-color: #9C27B0;
       color: #ffffff;
       font-size: 24px;
       padding: 20px 60px;
       border: none;
       border-radius: 50px;
       cursor: pointer;
-      outline: none;
-      margin: 10px; /* Небольшой отступ между кнопками */
+      margin: 10px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(0);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-family: 'Roboto', sans-serif; /* Добавлено для кнопок */
+      font-weight: 500; /* Средняя толщина */
     }
 
-    /* Плавающая кнопка со стрелкой (в нижнем правом углу) */
-    .floating-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #00BCD4; /* Бирюзовый цвет */
-      color: #ffffff;
-      width: 50px;
-      height: 50px;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      outline: none;
+    .main-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      background-color: #AB47BC;
     }
 
-    /* Футер в виде фиолетового «пузырька» внизу (по центру) */
+    .main-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Футер */
     .footer-bubble {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #9C27B0; /* Фиолетовый цвет */
+      background-color: #9C27B0;
       color: #ffffff;
       border-radius: 50px;
       padding: 10px 20px;
       font-size: 14px;
-      /* Немного поднимаем, чтобы не наезжать на плавающую кнопку */
-      margin-bottom: 60px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif; /* Добавлено для футера */
+      font-weight: 400;
+    }
+
+    .footer-bubble:hover {
+      box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
     }
   </style>
 </head>
 <body>
-  <h1>audIT</h1>
+  <h1>AudIT</h1>
 
   <!-- Большая кнопка "Начать аудит" -->
-  <button class="main-button">
-    Начать аудит
-  </button>
-
-  <!-- Кнопка "О НАС", ведущая на маршрут /about -->
-  <!-- Вариант 1: через форму -->
-  <!--
-  <form action="/about" method="get">
-      <button class="main-button" type="submit">О НАС</button>
+  <form action="{{ url_for('audit') }}" method="get">
+    <button class="main-button" type="submit">Начать аудит</button>
   </form>
-  -->
 
-  <!-- Вариант 2: через url_for (рекомендуется в Flask) -->
+  <!-- Кнопка "О НАС" -->
   <form action="{{ url_for('about') }}" method="get">
       <button class="main-button" type="submit">О НАС</button>
   </form>
 
-  <!-- Плавающая кнопка со стрелкой -->
-  <button class="floating-button">
-    ➜
-  </button>
-
-  <!-- Фиолетовый «пузырёк» внизу экрана -->
+  <!-- Футер -->
   <footer class="footer-bubble">
     САЙТ ДЛЯ АУДИТОВ ИИ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
   </footer>
