@@ -1,0 +1,19 @@
+.h2_audit{
+    margin-left: 40px;
+    margin-bottom: 0px;
+}
+.footer-bubble {
+    position: relative;
+    width: 50%;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #9C27B0;
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 14px;
+      margin-bottom: 60px;
+      font-family: 'Roboto', sans-serif; /* Добавлено для футера */
+      font-weight: 400;
+    }
